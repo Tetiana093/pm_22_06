@@ -1,13 +1,2 @@
-body {
-  background-color: white;
-  color:blue;
-}
-
-h1 {
-  color: black;
-}
-
-p {
-  color:pink;
-}
-
+@import "../pages/sidebar/sidebar.scss";
+@import "../pages/about/about.scss";

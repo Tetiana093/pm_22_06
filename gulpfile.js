@@ -12,17 +12,27 @@ const browserSync = require('browser-sync').create();
 const fileInclude = require('gulp-file-include');
 
 
+// Bootstrap CSS таска
+const bootstrapCSS = () => {
+  return src('node_modules/bootstrap/dist/css/bootstrap.min.css')
+    .pipe(dest('dist/css'));
+};
+
+// Bootstrap JS таска
+const bootstrapJS = () => {
+  return src('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
+    .pipe(dest('dist/js'));
+};
 
 // HTML таска з gulp-file-include
 const html_task = () => {
-  return src('src/pages/*.html') // основні html файли
+  return src('src/**/*.html') // основні html файли
     .pipe(fileInclude({
       prefix: '@@',
       basepath: '@file' // шукати інклуди відносно файлу
     }))
-    .pipe(htmlmin({ collapseWhitespace: true })) // мінімізація
-    .pipe(dest('dist'))
-    .on('end', () => browserSync.reload()); // перезавантаження браузера
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(dest('dist'));
 };
 
 
@@ -32,58 +42,47 @@ const scss_task = () => {
     .pipe(sass().on('error', sass.logError))
     .pipe(cssnano())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(dest('dist/css'))
-    .pipe(browserSync.stream()); // інʼєкція без reload
+    .pipe(dest('dist/css'));
 };
 
 // JS таска
 const js_task = () => {
-  return src('src/js/**/*.js')
+  return src('src/**/*.js')
     .pipe(terser())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(dest('dist/js'))
-    .on('end', () => browserSync.reload());
-    // .pipe(browserSync.stream());
+    .pipe(dest('dist/js'));
 };
 
 // Images таска
 const img_task = () => {
   return src('src/img/**/*')
     .pipe(imagemin())
-    .pipe(dest('dist/imgs'))
-    .pipe(browserSync.stream());
+    .pipe(dest('dist/imgs'));
 };
 
-// ----------------- СЕРВЕР -----------------
-
+// BrowserSync таска
 const serve = () => {
   browserSync.init({
     server: {
-      baseDir: 'dist'
+      baseDir: "dist"
     }
   });
 
-  // Слідкуємо за всіма файлами у src/
-  watch('src/pages/*.html', html_task);
-  watch('src/scss/**/*.scss', scss_task);
-  watch('src/js/**/*.js', js_task);
-  watch('src/img/**/*', img_task);
+  // Слідкування за файлами
+  watch('src/**/*.html', html_task).on('change', browserSync.reload);
+  watch('src/**/*.scss', scss_task).on('change', browserSync.reload);
+  watch('src/**/*.js', js_task).on('change', browserSync.reload);
+  watch('src/**/*', img_task).on('change', browserSync.reload);
 };
 
-// ----------------- ЗБІРКА -----------------
-
-const build = series(
-  parallel(html_task, scss_task, js_task, img_task),
-  serve
-);
-
-// ----------------- ЕКСПОРТИ -----------------
-
+exports.bootstrap = parallel(bootstrapCSS, bootstrapJS);
 exports.html = html_task;
 exports.scss = scss_task;
 exports.js = js_task;
 exports.img = img_task;
 exports.serve = serve;
-exports.default = build;
 
-
+exports.default = series(
+  parallel(bootstrapCSS, bootstrapJS, html_task, scss_task, js_task, img_task),
+  serve
+);

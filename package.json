@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Tetiana093/pm_22_06#readme",
   "devDependencies": {
+    "bootstrap": "^5.3.8",
     "browser-sync": "^3.0.4",
     "cssnano": "^7.1.1",
     "gulp": "^5.0.1",
