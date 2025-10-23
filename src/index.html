@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project</title>
-  
-  <link rel="stylesheet" href="css/bootstrap.min.css"> 
+
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.min.css">
-   <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CDt3A+vHqK+g/53u2q55N5GgJ0L/w8vG/8D2u5I5u5j5g==" 
-        crossorigin="anonymous" 
-        referrerpolicy="no-referrer" 
-    />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CDt3A+vHqK+g/53u2q55N5GgJ0L/w8vG/8D2u5I5u5j5g==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link 
-  rel="stylesheet" 
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
   <div class="container">
-    <div class="row">
-      <div class="col-5 p-5 left_part" style="background-color: #d1e8e6;">
+    <div class="row min-vh-100">
+      <div class="col-5 p-5 d-flex border-end border-dark flex-column left_part">
         @@include('pages/sidebar/sidebar.html')
       </div>
-      
-      <div class="col-7">
+
+      <div class="col-7 p-5 d-flex flex-column">
         @@include('pages/about/about.html')
       </div>
     </div>
   </div>
-  
+
 </body>
+
 </html>
