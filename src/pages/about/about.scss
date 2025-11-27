@@ -1,20 +1,41 @@
+.about-card {
+  @extend %box-default;
+  margin-top: $base-spacing;
+  border-left: 4px solid $primary-color;
+}
+
+.about-title {
+  @extend %title-large;
+  color: $text-color;
+}
+
+
+
 
 .about-me-text {
     text-align: justify;
-    color: #333;
+    color: $line-color;
 }
+
+// .progress {
+//   height: 10px;
+//   background-color: $bgpb-color;
+//   border-radius: 50px;
+//   overflow: hidden;
+//   border: 1px solid $pb-color;
+// }
+
+// .progress-bar {
+//   height: 100%;
+//   background-color: $primary-color;
+//   border-radius: 50px;
+//   transition: width 0.6s ease;
+// }
 
 .progress {
-  height: 10px;
-  background-color: #f2f2f2;
-  border-radius: 50px;
-  overflow: hidden;
-  border: 1px solid #555;
-}
+  @include rounded-progress($height: 10px, $bg-color: #f2f2f2, $border-color: #555, $radius: 50px);
 
-.progress-bar {
-  height: 100%;
-  background-color: #01a698;
-  border-radius: 50px;
-  transition: width 0.6s ease;
+  .progress-bar {
+    background-color: $primary-color;
+  }
 }

@@ -1,26 +1,44 @@
+.sidebar {
+  @extend %box-default;
+  width: 260px;
+
+  .sidebar-title {
+    @extend %title-large;
+    background: lighten($primary-color, 30%);
+    padding: 12px;
+    border-radius: 8px;
+  }
+}
+
+
 .name_res {
     font-weight: 800;
     text-align: center;
-    font-size: 3.3rem;
-    margin-top: 30px;
+    font-size: $base-font-size * 3.3; // 16px * 3.3 = 52.8px
+    margin-top: $base-spacing * 1.5; // 20px * 1.5 = 30px
 }
 
+// .photo_res {
+//   text-align: center; /* центрує вміст по горизонталі */
+// }
 .photo_res {
-  text-align: center; /* центрує вміст по горизонталі */
-}
+    text-align: center;
 
-.photo_res img {
-  width: 85%;
-  margin-top: 15px;
-  
+    img {
+        width: 85%;
+        margin-top: 15px;
+    }
 }
 
 .prof_res {
-    font-size: 20px;           /* розмір шрифту */
-    letter-spacing: 3px;       /* відстань між літерами */
-    text-transform: uppercase; /* великі літери */
-    color: #333333;
-    font-family: "Raleway Roman", sans-serif;
+    font-size: 20px;
+    /* розмір шрифту */
+    letter-spacing: 3px;
+    /* відстань між літерами */
+    text-transform: uppercase;
+    /* великі літери */
+    color: $line-color;
+    font-family: $font-main;
     text-align: center;
     line-height: 30px;
 }
@@ -32,17 +50,17 @@
 // }
 
 .contacts_res {
-    font-weight: 700;
+    // font-weight: 700;
     font-size: 35px;
     text-align: center;
-    margin-top: 50px;
+    // margin-top: 50px;
+    margin-top: $base-spacing * 2.5; // 20px * 2.5 = 50px
+    font-size: $base-font-size * 2.2; // ≈ 35px
 }
 
 .cont_res {
-    display: flex;
-    flex-direction: column;       /* всі рядки один під одним */
-    align-items: center;          /* центрування всього блоку по горизонталі */                 /* відстань між рядками */
-    font-size: 15px; 
+    @include center-flex(column); // Використовуємо міксін для центрування
+    font-size: 15px;
 
 }
 
@@ -50,7 +68,7 @@
     font-weight: 700;
     font-size: 65px;
     text-align: center;
-   
+
 }
 
 .degree_title {
@@ -70,7 +88,7 @@
 
 .references-title {
     font-weight: 700;
-     font-size: 65px;
+    font-size: 65px;
     text-align: center;
 }
 
@@ -81,7 +99,7 @@
     font-weight: 800;
     width: 75%;
     margin: 0 auto;
-    color: black;
+    color: $text-color;
 }
 
 // .contact_block hr {
@@ -90,7 +108,7 @@
 
 hr {
     height: 2px;
-    background-color: #333;
+    background-color: $line-color;
     opacity: 1;
 }
 
@@ -99,6 +117,6 @@ hr {
     height: 20px;
 }
 
-.left_part {
-  border-right: 3px solid black !important;
-}
+// .left_part {
+//   border-right: 3px solid $text-color !important;
+// }

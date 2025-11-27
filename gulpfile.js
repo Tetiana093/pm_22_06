@@ -38,7 +38,7 @@ const html_task = () => {
 
 // SCSS таска
 const scss_task = () => {
-  return src('src/scss/**/*.scss')
+  return src('src/scss/main.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(cssnano())
     .pipe(rename({ suffix: '.min' }))

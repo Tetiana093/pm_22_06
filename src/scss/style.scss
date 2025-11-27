@@ -1,27 +1,23 @@
-@import "../pages/sidebar/sidebar.scss";
-@import "../pages/about/about.scss";
-
 body .container{
-    border: 15px solid #01a698;
+    border: 15px solid $primary-color;
 }
 
 .left_part {
+  border-right: 3px solid $text-color !important;
   position: relative;        /* дозволяє позиціонувати смугу всередині */
   overflow: hidden;          /* щоб не виходила за межі */
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* вирівнюємо по центру */
+    width: 85%;                /* ширина смуги */
+    height: 3579px;              /* висота смуги */
+    background-color: $bg-color;   /* колір фону */
+    z-index: -1;                 /* щоб не перекривала контент */
+
+  }
+
 }
-
-/* Створюємо кольорову смугу всередині */
-.left_part::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%); /* вирівнюємо по центру */
-  width: 85%;                /* ширина смуги */
-  height: 3579px;              /* висота смуги */
-  background-color: #d1e8e6;   /* колір фону */
-  z-index: -1;                 /* щоб не перекривала контент */
-
-}
-
-
