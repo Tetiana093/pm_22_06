@@ -39,3 +39,68 @@
     background-color: $primary-color;
   }
 }
+
+.section-title {
+  justify-content: space-between;
+}
+
+.arrow_wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon {
+  display: inline-block;
+  // transition: transform 0.3s ease;
+  // transform-origin: center;
+  // cursor: pointer;
+  font-size: 25px;
+  line-height: 1;
+  // display: inline-block;
+  transform: scaleY(2.0);
+  // // transform: scaleX(1.8);
+  // /* Плавний перехід для обертання */
+  // transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.arrow_wrapper.rotated {
+  transform: rotate(90deg);
+} 
+
+
+.toggle-content {
+  overflow: hidden;
+  max-height: 2000px;
+  opacity: 1;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+.toggle-btn:not(.active) + .toggle-content {
+  max-height: 0;
+  opacity: 0;
+  //  margin-bottom: 0;
+  // margin-top: 0;
+}
+
+.toggle-btn.active + .toggle-content {
+  max-height: 2000px; // достатньо велике число
+  opacity: 1;
+}
+
+// .toggle-btn:not(.active) {
+//   margin-bottom: 0 !important;
+// }
+
+// .toggle-btn {
+//   transition: margin-bottom 0.3s ease;
+// }
+
+// .about-me-section,
+// .job-experience-section,
+// .skills-section {
+//   transition: margin-bottom 0.3s ease;
+// }
+
