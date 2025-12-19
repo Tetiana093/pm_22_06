@@ -12,6 +12,12 @@ const browserSync = require('browser-sync').create();
 const fileInclude = require('gulp-file-include');
 
 
+//JSON таска
+const json_task = () => {
+  return src('src/data.json')
+    .pipe(dest('dist'));
+};
+
 // Bootstrap CSS таска
 const bootstrapCSS = () => {
   return src('node_modules/bootstrap/dist/css/bootstrap.min.css')
@@ -73,6 +79,8 @@ const serve = () => {
   watch('src/**/*.scss', scss_task).on('change', browserSync.reload);
   watch('src/**/*.js', js_task).on('change', browserSync.reload);
   watch('src/**/*', img_task).on('change', browserSync.reload);
+  // 🔥 NEW: слідкування за JSON
+  watch('src/**/*.json', json_task).on('change', browserSync.reload);
 };
 
 exports.bootstrap = parallel(bootstrapCSS, bootstrapJS);
@@ -80,9 +88,12 @@ exports.html = html_task;
 exports.scss = scss_task;
 exports.js = js_task;
 exports.img = img_task;
+exports.json = json_task;
 exports.serve = serve;
 
 exports.default = series(
-  parallel(bootstrapCSS, bootstrapJS, html_task, scss_task, js_task, img_task),
+  parallel(bootstrapCSS, bootstrapJS, html_task, scss_task, js_task, img_task, json_task),
   serve
 );
+
+
